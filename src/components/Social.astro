@@ -1,0 +1,15 @@
+---
+const { platform, username } = Astro.props; // Props para el componente Footer
+//línea de código que se necesita escribir en el frontmatter de un componente Astro para recibir valores como propiedades
+
+---
+<a href={`https://www.${platform}.com/${username}`}>{platform}</a> 
+
+<style>
+    a {
+        padding: 0.5rem 1rem;
+        color: white;
+        background-color: #4c1d95;
+        text-decoration: none;
+    }
+</style>

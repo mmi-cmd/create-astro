@@ -1,0 +1,20 @@
+---
+/* const platform = "github";
+const username = "mmi-cmd"; */ // Reemplazo de props para el componente Footer
+
+import Social from './Social.astro'; // Importa el componente de redes sociales
+---
+
+<style>
+    footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+
+<footer>
+    <Social platform="github" username="mmi-cmd" /> <!-- Reemplazo de props para el componente Footer -->
+    <Social platform="twitter" username="MichellPrezGme1" /> <!-- Reemplazo de props para el componente Footer -->
+    <Social platform="linkedin" username="michell" /> <!-- Reemplazo de props para el componente Footer -->
+</footer>

@@ -1,21 +1,66 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        
-        <h1>My Astro Site</h1>
-        <h1>About Me</h1>
-        <h2>I am Michell and my new Astro site!</h2>
-    
-        <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-    
-        <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-    </body>
-</html>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "About Me";
+const identity = {
+    firstName: "Michell",
+    country: "Colombia",
+    occupation: "Student",
+    hobbies: ["Knitting", "listening to music"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Java"];
+
+const happy = true; //constantes para mostrar o no informacion en el nav
+const finished = true;
+const goal = 3;
+
+const skillColor = "navy"; // Color de la clase skill
+const fontWeight = "bold"; // Peso de la fuente de la clase skill
+const textCase = "uppercase"; // Caso de la fuente de la clase skill
+
+---
+<BaseLayout pageTitle={pageTitle}>
+	<style define:vars={{skillColor, fontWeight, textCase}}> /* Definicion de variables CSS con {} dobles */
+    .skill {
+      color: var(--skillColor); /* Usando la variable de color definida en el script */
+      font-weight: var(--fontWeight); /* Usando la variable de peso de fuente definida en el script */
+      text-transform: var(--textCase);
+    }
+  </style>
+  
+  <h2>I am Michell and my new Astro site!</h2>
+  
+  <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+  
+  <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+  
+  <p>Here are a few facts about me:</p>
+  
+  <ul>
+  <li>My name is {identity.firstName}.</li>
+  <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+  {identity.hobbies.length >= 2 &&
+      <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+  }
+  </ul>
+  
+  <p>My skills are:</p>
+  <ul>
+  {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+  
+  
+  
+  {happy && <p>I am happy to be learning Astro!</p>} <!-- Muestra la informacon solo si happy es true -->
+  
+  {finished && <p>I finished this tutorial!</p>} <!-- Muestra la informacon solo si finished es true -->
+  
+  {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>} <!-- Muestra la informacon segun el valor de goal -->
+  
+  
+  
+</BaseLayout>
+
+
+
+
